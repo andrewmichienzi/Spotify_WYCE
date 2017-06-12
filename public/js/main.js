@@ -1,10 +1,28 @@
 
 
-import myDatepicker from 'vue-datepicker/vue-datepicker-1.vue'
+// import myDatepicker from 'vue-datepicker/vue-datepicker-1.vue'
+Vue.config.devtools = true;
 
+Vue.component('playlists', {
+      template: '#playlists-template',
+      props: ['lists'],
+
+      created() {
+            this.lists = JSON.parse(this.lists);
+      }
+});
+      
 new Vue({
-    el: '#root',
+    el: 'body',
     
+    data: {
+      message: 'hello world',
+      tasks: [
+            'Go to the store',
+            'Go to the bank',
+            'Go to the doctor'
+      ]
+    }
 });
 
 /*window.Event = new class {

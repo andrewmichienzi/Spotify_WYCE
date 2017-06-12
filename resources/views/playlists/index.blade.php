@@ -2,43 +2,39 @@
 <html lang="en">
 
 <head>
+    <title>WYCE Playlist</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 </head>
 
 <body>
-    {{ $playlist->programmer }}
-    <ul>
-        @foreach($playlist->songs as $song)
-        <li>
-            {{-- /*song.blade.php*/ --}}
-            <div class="box" style="border: solid 1px">
-                <article class="media">
-                    <div class="media-content">
+
+        <div class="container">
+            <playlists lists="{{ json_encode($playlists) }}"></playlists>
+        </div>
+
+        <template id="playlists-template">
+        <ul class="list-group" v-for="playlist in lists">
+        @{{ playlist.programmer }}
+            <div class="playlist" style="border: 1px solid;">
+                <li class="list-group-item" v-for="song in playlist">
+                    <div class="box" style="border: solid 1px">
                         <div class="content">
                             <p>
                                 <strong>
-     								{{ $song->track_title }}
-     							</strong>
-                                <br> Artist: {{ $song->artist }}
-                                <br> Album: <small>{{ $song->album }}</small>
+                                    @{{ song.track_title }}
+                                </strong>
+                                <br> Artist: @{{ song.artist }}
+                                <br> Album: <small>@{{ song.album }}</small>
                             </p>
                         </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small"><i class="fa fa-reply"></i></span>
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small"><i class="fa fa-heart"></i></span>
-                                </a>
-                            </div>
-                        </nav>
                     </div>
-                </article>
+                </li>
             </div>
-        </li>
-        @endforeach
-    </ul>
+        </ul>
+        </template>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.8/vue.js"></script>
+        <script src="/js/main.js"></script>
 </body>
+</html>

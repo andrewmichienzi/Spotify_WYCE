@@ -1,7 +1,5 @@
 <?php
-MaddHatter\LaravelFullcalendar\ServiceProvider::class
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name

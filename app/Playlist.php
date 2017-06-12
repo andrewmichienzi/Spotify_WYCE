@@ -4,6 +4,7 @@ namespace App;
 
 use App\Song;
 use Carbon\Carbon;
+use Log;
 
 class Playlist extends Model
 {
@@ -34,8 +35,10 @@ class Playlist extends Model
     ]);
   }
 
-  public static function processPlaylist($playlist){
-    
+  public function processPlaylist($playlist){
+
+    // Log::info(($playlist['date'].' '. $playlist['time'])->toDateTimeString());
+    // Log::info($playlist['date']);
     $dateTime = Carbon::parse($playlist['date'].' '. $playlist['time'])->toDateTimeString();
     
     if( ! Playlist::playlistExists($playlist['programmer'], $dateTime))

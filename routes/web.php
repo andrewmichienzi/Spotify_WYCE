@@ -4,6 +4,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/setlist', function() {
+	return view('setlist.index');
+});
+
 Route::get('/login', 'SessionController@index');
 
 Route::post('/login', 'SessionController@create');
